@@ -16,6 +16,7 @@ export interface TodoItem {
   text: string;
   completed: boolean;
   category: string;
+  time?: string;
 }
 
 export interface ChatMessage {
@@ -52,10 +53,10 @@ export const store = {
   getTodos: (): TodoItem[] => {
     const raw = localStorage.getItem(KEYS.todos);
     return raw ? JSON.parse(raw) : [
-      { id: '1', text: 'Review ML lecture notes', completed: false, category: 'Study' },
-      { id: '2', text: 'Complete assignment draft', completed: false, category: 'Work' },
-      { id: '3', text: '30 min exercise', completed: true, category: 'Health' },
-      { id: '4', text: 'Read 20 pages', completed: false, category: 'Growth' },
+      { id: '1', text: 'Review ML lecture notes', completed: false, category: 'Study', time: '09:00' },
+      { id: '2', text: 'Complete assignment draft', completed: false, category: 'Work', time: '11:00' },
+      { id: '3', text: '30 min exercise', completed: true, category: 'Health', time: '17:00' },
+      { id: '4', text: 'Read 20 pages', completed: false, category: 'Growth', time: '20:00' },
     ];
   },
   setTodos: (t: TodoItem[]) => localStorage.setItem(KEYS.todos, JSON.stringify(t)),
